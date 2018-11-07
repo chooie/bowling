@@ -4,9 +4,11 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/main.js",
+    "test": "mocha --reporter dot \"src/_*_test.js\"",
+    "watch": "mocha --reporter min --watch \"src/_*_test.js\""
   },
-  "author": "",
+  "author": "Charles Hebert",
   "license": "ISC",
   "devDependencies": {
     "mocha": "^5.2.0"

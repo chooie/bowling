@@ -1,3 +1,3 @@
 const assert = require("assert");
 
-exports.equal = assert.deepStrictEqual;
+module.exports = Object.assign({}, assert, { equal: assert.deepStrictEqual });

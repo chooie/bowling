@@ -1,11 +1,27 @@
 const assert = require("./assert.js");
+const main = require("./main.js");
 
 describe("Main", function() {
-  it("is true", function() {
-    assert.equal(
-      { foo: "bar", baz: "quux" },
-      { foo: "bar", baz: "quux" },
-      "Strict deep equal by default"
+  it("can set the score for a frame", function() {
+    assert.throws(function() {
+      main.getScoreForFrame(5);
+    }, "No second chance attempted should throw and exception");
+
+    assert.equal(main.getScoreForFrame(10), "STRIKE");
+    assert.equal(main.getScoreForFrame(7, 3), "SPARE");
+    assert.throws(
+      main.getScoreForFrame.bind(null, 7, 7),
+      /Invalid score/,
+      "Scores greater than whatever strike should be rejected"
     );
+    assert.throws(
+      main.getScoreForFrame.bind(null, 1, { hello: "world" }),
+      "FIRST"
+    );
+    assert.throws(
+      main.getScoreForFrame.bind(null, "Not valid", { hello: "world" }),
+      "SECOND"
+    );
+    assert.equal(main.getScoreForFrame(4, 3), 7, "Valid Score");
   });
 });

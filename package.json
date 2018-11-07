@@ -11,8 +11,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test"
+      "pre-commit": "lint-staged && npm test"
     }
+  },
+  "lint-staged": {
+    "*.{js,css}": [
+      "npm run pretty",
+      "git add"
+    ]
   },
   "author": "Charles Hebert",
   "license": "ISC",

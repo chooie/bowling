@@ -24,4 +24,20 @@ describe("Main", function() {
     );
     assert.equal(main.getScoreForFrame(4, 3), 7, "Valid Score");
   });
+
+  it("can determine the scores from an array of numbers", function() {
+    const twentyZeroesScore = main.getFrameScores(repeat(0, 20));
+    assert.equal(twentyZeroesScore, repeat(0, 10));
+
+    const twelveTensScore = main.getFrameScores(repeat(10, 12));
+    assert.equal(twelveTensScore, repeat("STRIKE", 12));
+  });
 });
+
+function repeat(value, numberOfTimes) {
+  const array = [];
+  for (let i = 0; i < numberOfTimes; i += 1) {
+    array.push(value);
+  }
+  return array;
+}

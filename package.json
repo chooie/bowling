@@ -5,7 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "start": "node src/main.js",
-    "test": "mocha --reporter dot \"src/_*_test.js\"",
+    "test": "eslint src && mocha --reporter dot \"src/_*_test.js\"",
     "watch": "mocha --reporter min --watch \"src/_*_test.js\"",
     "pretty": "prettier --write \"src/**/*.js\""
   },
